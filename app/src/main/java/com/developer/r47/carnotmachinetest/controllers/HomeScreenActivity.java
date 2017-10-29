@@ -67,6 +67,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
+                Toast.makeText(HomeScreenActivity.this, "Downloading data please wait till the stats appear", Toast.LENGTH_SHORT).show();
                 getCommentsFromServer();
                 getPhotosFromServer();
                 getPostsFromServer();
