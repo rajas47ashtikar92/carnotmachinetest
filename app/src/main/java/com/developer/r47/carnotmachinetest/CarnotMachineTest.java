@@ -4,6 +4,8 @@ import android.content.Context;
 import android.support.multidex.MultiDex;
 import android.support.multidex.MultiDexApplication;
 
+import com.developer.r47.carnotmachinetest.configs.RealmConfigurations;
+
 /**
  * Created by r47 on 29/10/17.
  */
@@ -28,5 +30,7 @@ public class CarnotMachineTest extends MultiDexApplication {
         super.onCreate();
         //initialize the singleton instance of the application class
         instance = this;
+        //initialize realm configuration
+        RealmConfigurations.initializeRealm(this);
     }
 }
