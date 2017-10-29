@@ -13,6 +13,8 @@ import com.developer.r47.carnotmachinetest.R;
 import com.developer.r47.carnotmachinetest.configs.CarnotMachineTestCallback;
 import com.developer.r47.carnotmachinetest.configs.RealmConfigurations;
 import com.developer.r47.carnotmachinetest.models.CarnotMachineTestError;
+import com.developer.r47.carnotmachinetest.models.CommentResponseTime;
+import com.developer.r47.carnotmachinetest.models.PhotoResponseTime;
 import com.developer.r47.carnotmachinetest.utilities.DownloadingUtility;
 
 import java.io.File;
@@ -61,8 +63,9 @@ public class HomeScreenActivity extends AppCompatActivity {
         DownloadingUtility.getInstance().getCommentsFromServer(new CarnotMachineTestCallback() {
             @Override
             public void onSuccess(Object response) {
-                if (response != null) {
-                    Toast.makeText(HomeScreenActivity.this, "Network call is successful", Toast.LENGTH_SHORT).show();
+                if (response != null && response instanceof CommentResponseTime) {
+                    CommentResponseTime responseTime = (CommentResponseTime) response;
+                    Toast.makeText(HomeScreenActivity.this, responseTime.commentPingTimeStart + "\n" + responseTime.commentPingTimeEnd + "\n" + responseTime.commentSaveTimeStart + "\n" + responseTime.commentSaveTimeEnd, Toast.LENGTH_SHORT).show();
                 }
             }
 
@@ -78,8 +81,9 @@ public class HomeScreenActivity extends AppCompatActivity {
         DownloadingUtility.getInstance().getPhotosFromServer(new CarnotMachineTestCallback() {
             @Override
             public void onSuccess(Object response) {
-                if (response != null) {
-                    Toast.makeText(HomeScreenActivity.this, "Photos Successfully retrieved", Toast.LENGTH_SHORT).show();
+                if (response != null && response instanceof PhotoResponseTime) {
+                    PhotoResponseTime responseTime = (PhotoResponseTime) response;
+                    Toast.makeText(HomeScreenActivity.this, responseTime.photoPingTimeStart +"\n"+responseTime.photoPingTimeEnd +"\n" + responseTime.photoSaveTimeStart +"\n" + responseTime.photoSaveTimeEnd , Toast.LENGTH_SHORT).show();
                 }
             }
 
