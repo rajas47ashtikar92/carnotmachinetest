@@ -25,6 +25,7 @@ import io.realm.Realm;
 public class HomeScreenActivity extends AppCompatActivity {
 
     private TextView exportrealmdb;
+    private TextView currentsystemtime;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +33,8 @@ public class HomeScreenActivity extends AppCompatActivity {
         setContentView(R.layout.activity_home_screen);
 
         this.exportrealmdb = (TextView) findViewById(R.id.exportrealmdb);
+        this.currentsystemtime = (TextView) findViewById(R.id.currentsystemtime);
+        this.currentsystemtime.setText(DownloadingUtility.getInstance().getCurrentSystemTime());
         exportrealmdb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

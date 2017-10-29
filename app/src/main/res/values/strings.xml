@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">CarnotMachineTest</string>
+    <string name="toolbartitle">Test</string>
 </resources>

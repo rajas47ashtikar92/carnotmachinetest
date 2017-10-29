@@ -183,10 +183,10 @@ public class DownloadingUtility {
         });
     }
 
-    private String getCurrentSystemTime() {
+    public String getCurrentSystemTime() {
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("GMT+5:30"));
         Date currentLocalTime = cal.getTime();
-        DateFormat date = new SimpleDateFormat("HH:mm a");
+        DateFormat date = new SimpleDateFormat("hh:mm a");
         // you can get seconds by adding  "...:ss" to it
         date.setTimeZone(TimeZone.getTimeZone("GMT+5:30"));
 
