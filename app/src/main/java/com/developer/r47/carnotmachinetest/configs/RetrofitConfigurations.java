@@ -10,7 +10,9 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class RetrofitConfigurations {
 
     //base url for the calls to be made
-    public static final String baseUrl = "https://jsonplaceholder.typicode.com/";
+    private static final String baseUrl = "https://jsonplaceholder.typicode.com/";
+    public static final int INTERNAL_ERROR_CODE = 1001;
+    public static final String INTERNAL_ERROR_MESSAGE = "Oops Something went wrong";
 
     /*creates the retrofit builder instance, with the base url of the api to be called, and the
     json converter factory. Now the json response from the api will be converted using the
