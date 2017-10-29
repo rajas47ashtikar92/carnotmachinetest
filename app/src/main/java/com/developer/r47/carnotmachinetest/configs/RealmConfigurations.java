@@ -2,8 +2,11 @@ package com.developer.r47.carnotmachinetest.configs;
 
 import android.content.Context;
 
+import java.util.List;
+
 import io.realm.Realm;
 import io.realm.RealmConfiguration;
+import io.realm.RealmResults;
 
 /**
  * Created by r47 on 29/10/17.
@@ -40,5 +43,17 @@ public class RealmConfigurations {
     //since the instance of the realm is static, it will have to made null after realm has been destroyed
     public static void setRealmInstance(Realm realmInstance) {
         RealmConfigurations.realmInstance = realmInstance;
+    }
+
+    //save objects to the realm db
+    public static void saveDataToLocalDB(List objects) {
+        Realm realmInstance = getRealmInstance();
+        try {
+            realmInstance.beginTransaction();
+            realmInstance.copyToRealmOrUpdate(objects);
+            realmInstance.commitTransaction();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

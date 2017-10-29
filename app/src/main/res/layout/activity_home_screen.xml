@@ -6,4 +6,16 @@
     android:layout_height="match_parent"
     tools:context="com.developer.r47.carnotmachinetest.controllers.HomeScreenActivity">
 
+    <TextView
+        android:id="@+id/exportrealmdb"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"
+        android:text="Export Db"/>
+
+
 </android.support.constraint.ConstraintLayout>

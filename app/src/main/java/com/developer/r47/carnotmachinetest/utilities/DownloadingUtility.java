@@ -1,6 +1,7 @@
 package com.developer.r47.carnotmachinetest.utilities;
 
 import com.developer.r47.carnotmachinetest.configs.CarnotMachineTestCallback;
+import com.developer.r47.carnotmachinetest.configs.RealmConfigurations;
 import com.developer.r47.carnotmachinetest.configs.RetrofitConfigurations;
 import com.developer.r47.carnotmachinetest.models.CarnotMachineTestError;
 import com.developer.r47.carnotmachinetest.models.Comment;
@@ -41,6 +42,9 @@ public class DownloadingUtility {
             @Override
             public void onResponse(Call<List<Comment>> call, Response<List<Comment>> response) {
                 if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        RealmConfigurations.saveDataToLocalDB(response.body());
+                    }
                     carnotMachineTestCallback.onSuccess(response.body());
                 } else {
                     if (response.errorBody() != null) {
@@ -69,6 +73,9 @@ public class DownloadingUtility {
             @Override
             public void onResponse(Call<List<Photo>> call, Response<List<Photo>> response) {
                 if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        RealmConfigurations.saveDataToLocalDB(response.body());
+                    }
                     carnotMachineTestCallback.onSuccess(response.body());
                 } else {
                     if (response.errorBody() != null) {
@@ -96,6 +103,9 @@ public class DownloadingUtility {
             @Override
             public void onResponse(Call<List<Todo>> call, Response<List<Todo>> response) {
                 if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        RealmConfigurations.saveDataToLocalDB(response.body());
+                    }
                     carnotMachineTestCallback.onSuccess(response.body());
                 } else {
                     if (response.errorBody() != null) {
@@ -123,6 +133,9 @@ public class DownloadingUtility {
             @Override
             public void onResponse(Call<List<Post>> call, Response<List<Post>> response) {
                 if (response.isSuccessful()) {
+                    if (response.body() != null) {
+                        RealmConfigurations.saveDataToLocalDB(response.body());
+                    }
                     carnotMachineTestCallback.onSuccess(response.body());
                 } else {
                     if (response.errorBody() != null) {
