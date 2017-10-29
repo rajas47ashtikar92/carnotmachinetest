@@ -124,6 +124,8 @@ public class HomeScreenActivity extends AppCompatActivity {
         });
     }
 
+
+    //if the offline database needs to be checked
     private void exportRealmDB() {
         // init realm
         Realm realm = RealmConfigurations.getRealmInstance();
@@ -132,10 +134,8 @@ public class HomeScreenActivity extends AppCompatActivity {
         try {
             // get or create an "export.realm" file
             exportRealmFile = new File(this.getExternalCacheDir(), "export.realm");
-
             // if "export.realm" already exists, delete
             exportRealmFile.delete();
-
             // copy current realm to "export.realm"
             realm.writeCopyTo(exportRealmFile);
 
