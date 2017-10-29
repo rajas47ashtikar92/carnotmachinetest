@@ -15,6 +15,8 @@ import com.developer.r47.carnotmachinetest.configs.RealmConfigurations;
 import com.developer.r47.carnotmachinetest.models.CarnotMachineTestError;
 import com.developer.r47.carnotmachinetest.models.CommentResponseTime;
 import com.developer.r47.carnotmachinetest.models.PhotoResponseTime;
+import com.developer.r47.carnotmachinetest.models.PostResponseTime;
+import com.developer.r47.carnotmachinetest.models.TodoResponseTime;
 import com.developer.r47.carnotmachinetest.utilities.DownloadingUtility;
 
 import java.io.File;
@@ -26,15 +28,27 @@ public class HomeScreenActivity extends AppCompatActivity {
 
     private TextView exportrealmdb;
     private TextView currentsystemtime;
+    private TextView commentstats;
+    private TextView photostats;
+    private TextView todostats;
+    private TextView postsstats;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
+        //initializing the textviews for displaying the data
         this.exportrealmdb = (TextView) findViewById(R.id.exportrealmdb);
         this.currentsystemtime = (TextView) findViewById(R.id.currentsystemtime);
         this.currentsystemtime.setText(DownloadingUtility.getInstance().getCurrentSystemTime());
+        this.commentstats = (TextView) findViewById(R.id.commentstats);
+        this.photostats = (TextView) findViewById(R.id.photostats);
+        this.todostats = (TextView) findViewById(R.id.todostats);
+        this.postsstats = (TextView) findViewById(R.id.postsstats);
+
+
         exportrealmdb.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -68,7 +82,7 @@ public class HomeScreenActivity extends AppCompatActivity {
             public void onSuccess(Object response) {
                 if (response != null && response instanceof CommentResponseTime) {
                     CommentResponseTime responseTime = (CommentResponseTime) response;
-                    Toast.makeText(HomeScreenActivity.this, responseTime.commentPingTimeStart + "\n" + responseTime.commentPingTimeEnd + "\n" + responseTime.commentSaveTimeStart + "\n" + responseTime.commentSaveTimeEnd, Toast.LENGTH_SHORT).show();
+                    commentstats.setText("Start: "+responseTime.commentPingTimeStart+"\nEnd: "+responseTime.commentPingTimeEnd+"\nStart Save: "+responseTime.commentSaveTimeStart+"\nEnd Save: "+responseTime.commentSaveTimeEnd);
                 }
             }
 
@@ -86,7 +100,7 @@ public class HomeScreenActivity extends AppCompatActivity {
             public void onSuccess(Object response) {
                 if (response != null && response instanceof PhotoResponseTime) {
                     PhotoResponseTime responseTime = (PhotoResponseTime) response;
-                    Toast.makeText(HomeScreenActivity.this, responseTime.photoPingTimeStart +"\n"+responseTime.photoPingTimeEnd +"\n" + responseTime.photoSaveTimeStart +"\n" + responseTime.photoSaveTimeEnd , Toast.LENGTH_SHORT).show();
+                    photostats.setText("Start: "+responseTime.photoPingTimeStart+"\nEnd: "+responseTime.photoPingTimeEnd+"\nStart Save: "+responseTime.photoSaveTimeStart+"\nEnd Save: "+responseTime.photoSaveTimeEnd);
                 }
             }
 
@@ -102,8 +116,9 @@ public class HomeScreenActivity extends AppCompatActivity {
         DownloadingUtility.getInstance().getTodosFromServer(new CarnotMachineTestCallback() {
             @Override
             public void onSuccess(Object response) {
-                if (response != null) {
-                    Toast.makeText(HomeScreenActivity.this, "Todos Successfully retrieved", Toast.LENGTH_SHORT).show();
+                if (response != null && response instanceof TodoResponseTime) {
+                    TodoResponseTime responseTime = (TodoResponseTime) response;
+                    todostats.setText("Start: "+responseTime.todoPingTimeStart+"\nEnd: "+responseTime.todoPingTimeEnd+"\nStart Save: "+responseTime.todaSaveTimeStart+"\nEnd Save: "+responseTime.todoSaveTimeEnd);
                 }
             }
 
@@ -119,8 +134,9 @@ public class HomeScreenActivity extends AppCompatActivity {
         DownloadingUtility.getInstance().getPostsFromServer(new CarnotMachineTestCallback() {
             @Override
             public void onSuccess(Object response) {
-                if (response != null) {
-                    Toast.makeText(HomeScreenActivity.this, "Posts successfully retrieved from server", Toast.LENGTH_SHORT).show();
+                if (response != null && response instanceof PostResponseTime) {
+                    PostResponseTime responseTime = (PostResponseTime) response;
+                    postsstats.setText("Start: "+responseTime.postPingTimeStart+"\nEnd: "+responseTime.postPingTimeEnd+"\nStart Save: "+responseTime.postSaveTimeStart+"\nEnd Save: "+responseTime.postSaveTimeEnd);
                 }
             }
 
@@ -132,7 +148,7 @@ public class HomeScreenActivity extends AppCompatActivity {
     }
 
 
-    //if the offline database needs to be checked
+    //if the offline database needs to be checked, this can only be viewed using a realm browser.
     private void exportRealmDB() {
         // init realm
         Realm realm = RealmConfigurations.getRealmInstance();

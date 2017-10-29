@@ -60,9 +60,11 @@
                     android:layout_alignEnd="@+id/verticalseperater"
                     android:layout_alignParentStart="true"
                     android:layout_alignParentTop="true"
-                    android:gravity="center"
-                    android:textSize="15sp"
-                    android:text="Comment Stats" />
+                    android:gravity="start|center_vertical"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:text="Comment Stats"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/photostats"
@@ -72,9 +74,11 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentTop="true"
                     android:layout_alignStart="@+id/verticalseperater"
-                    android:gravity="center"
-                    android:textSize="15sp"
-                    android:text="Photo stats" />
+                    android:gravity="start|center_vertical"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:text="Photo stats"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/todostats"
@@ -84,9 +88,11 @@
                     android:layout_alignParentBottom="true"
                     android:layout_alignParentStart="true"
                     android:layout_alignTop="@+id/horizontalseperater"
-                    android:gravity="center"
-                    android:textSize="15sp"
-                    android:text="Todo Stats" />
+                    android:gravity="start|center_vertical"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:text="Todo Stats"
+                    android:textSize="15sp" />
 
                 <TextView
                     android:id="@+id/postsstats"
@@ -96,9 +102,11 @@
                     android:layout_alignParentEnd="true"
                     android:layout_alignStart="@+id/verticalseperater"
                     android:layout_alignTop="@+id/horizontalseperater"
-                    android:gravity="center"
-                    android:textSize="15sp"
-                    android:text="Posts Stats" />
+                    android:gravity="start|center_vertical"
+                    android:paddingEnd="10dp"
+                    android:paddingStart="10dp"
+                    android:text="Posts Stats"
+                    android:textSize="15sp" />
             </RelativeLayout>
         </android.support.v7.widget.CardView>
 
@@ -108,9 +116,9 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toTopOf="@+id/currentsystemtime"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/statsview">
 
             <TextView
@@ -120,9 +128,9 @@
                 android:layout_alignParentStart="true"
                 android:layout_marginStart="16dp"
                 android:background="@drawable/custom_borders"
+                android:gravity="center"
                 android:text="Button 1"
-                android:textSize="20sp"
-                android:gravity="center"/>
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/button2"
@@ -131,9 +139,9 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginEnd="16dp"
                 android:background="@drawable/custom_borders"
+                android:gravity="center"
                 android:text="Button 2"
-                android:textSize="20sp"
-                android:gravity="center"/>
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/button3"
@@ -144,9 +152,9 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/custom_borders"
+                android:gravity="center"
                 android:text="Button 3"
-                android:textSize="20sp"
-                android:gravity="center"/>
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/exportrealmdb"
@@ -157,9 +165,9 @@
                 android:layout_marginEnd="16dp"
                 android:layout_marginTop="16dp"
                 android:background="@drawable/custom_borders"
+                android:gravity="center"
                 android:text="Button 4"
-                android:textSize="20sp"
-                android:gravity="center"/>
+                android:textSize="20sp" />
 
         </RelativeLayout>
 
@@ -171,13 +179,13 @@
             android:layout_marginBottom="16dp"
             android:layout_marginEnd="16dp"
             android:layout_marginStart="16dp"
+            android:background="@drawable/custom_borders"
             android:gravity="center"
             android:text="Current Unix Time"
             android:textSize="20sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            android:background="@drawable/custom_borders"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </android.support.constraint.ConstraintLayout>
